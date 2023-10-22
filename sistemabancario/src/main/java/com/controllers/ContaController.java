@@ -20,7 +20,7 @@ import com.models.entity.Conta;
 import com.models.entity.UsuarioFisico;
 import com.models.entity.UsuarioJuridico;
 
-public class ContaController {
+public abstract class ContaController {
 
     private static Connection conexao = Conexao.getInstancia();
     private static UsuarioFisico usuarioFisico;
@@ -31,7 +31,6 @@ public class ContaController {
     private static UsuarioFisicoDAO usuarioFisicoDAO = new UsuarioFisicoDAO(conexao);
     private static UsuarioJuridicoDAO usuarioJuridicoDAO = new UsuarioJuridicoDAO(conexao);
     private static Scanner scanner = new Scanner(System.in);
-
 
     public static Conta cadastrarConta(int tipoConta) throws SQLException {
 
@@ -137,7 +136,14 @@ public class ContaController {
 
         while (tentativas < 3) {
             tentativas++;
-            contaDAO.obterDadosUsuarioContaPorCPF(contaDestino);
+
+            if (contaDestino.length() == 11) {
+                contaDAO.obterDadosUsuarioContaPorCPF(contaDestino);
+            }
+
+            if (contaDestino.length() == 14) {
+                contaDAO.obterDadosUsuarioContaPorCNPJ(contaDestino);
+            }
 
             String senhaUsuario;
             System.out.printf("| Tentativa %d de 3 \n| Confirmar senha: ", tentativas);

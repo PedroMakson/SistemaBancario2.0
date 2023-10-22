@@ -13,7 +13,7 @@ import com.models.entity.Conexao;
 import com.models.entity.Conta;
 import com.models.entity.Emprestimo;
 
-public class EmprestimoController {
+public abstract class EmprestimoController {
 
     private static Connection conexao = Conexao.getInstancia();
     private static EmprestimoDAO emprestimoDAO = new EmprestimoDAO(conexao);
@@ -66,8 +66,8 @@ public class EmprestimoController {
             } else {
                 if (validarValorParcela > rendaReceita) {
                     App.limparTela();
-                    System.out.printf("\n\n > O valor total ficou de R$%.2f em %dX com %.0f% de juros! <\n",
-                            valorEmprestimoComJuros, parcelas, (double) juros);
+                    System.out.printf("\n\n > O valor total ficou de R$%.2f em %dX com %d(por cento) de juros! <\n",
+                            valorEmprestimoComJuros, parcelas, juros);
                     System.out.printf(
                             " > As parcelas ficaram no valor de R$%.2f, o que não condiz com o valor da sua rendaReceita. <\n",
                             validarValorParcela);

@@ -3,7 +3,7 @@ package com.controllers;
 import java.sql.SQLException;
 import com.models.entity.Conta;
 
-public class BancoFacade {
+public abstract class BancoFacade {
 
     // MÉTODOS CONTA
 

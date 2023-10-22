@@ -12,7 +12,7 @@ public class App {
     public static void main(String[] args) throws SQLException {
 
         limparTela();
-        
+
         Conexao.getInstancia();
         Scanner scanner = new Scanner(System.in);
 
@@ -138,9 +138,9 @@ public class App {
                                     int contadorErro = 0;
 
                                     do {
-                                        System.out.println("+----------------------------------+");
-                                        System.out.println("|     T R A N S F E R Ê N C I A    |");
-                                        System.out.println("+----------------------------------+");
+                                        System.out.println("+-----------------------------------------+");
+                                        System.out.println("|         T R A N S F E R Ê N C I A       |");
+                                        System.out.println("+-----------------------------------------+");
                                         System.out.printf("| Digite o valor: R$");
                                         valorTransferir = scanner.nextInt();
                                         limparTela();
@@ -151,13 +151,14 @@ public class App {
                                             boolean contaValida = false;
 
                                             for (int tentativas = 0; tentativas < 3; tentativas++) {
-                                                System.out.println("+----------------------------------+");
-                                                System.out.println("|     T R A N S F E R Ê N C I A    |");
-                                                System.out.println("+----------------------------------+");
-                                                System.out.printf("| Conta destino (CPF): ");
+                                                System.out.println("+-----------------------------------------+");
+                                                System.out.println("|         T R A N S F E R Ê N C I A       |");
+                                                System.out.println("+-----------------------------------------+");
+                                                System.out.printf("| Conta destino (CPF/CNPJ): ");
                                                 contaDestino = scanner.next();
 
-                                                if (BancoFacade.buscarPorCPF(contaDestino) == false) {
+                                                if (BancoFacade.buscarPorCPF(contaDestino) == false
+                                                        && BancoFacade.buscarPorCNPJ(contaDestino) == false) {
                                                     limparTela();
                                                     System.out.println("\n> Conta inválida, tente novamente! <\n");
                                                 } else if (contaDestino.equals(login)) {

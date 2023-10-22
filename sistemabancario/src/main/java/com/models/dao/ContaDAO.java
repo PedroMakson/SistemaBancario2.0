@@ -299,15 +299,16 @@ public class ContaDAO {
     }
 
     public void obterDadosUsuarioContaPorCNPJ(String cnpj) throws SQLException {
-        String sql = "SELECT u.nome, u.cnpj, c.agencia, SUBSTRING(c.conta, 1, 5) AS numero_conta, SUBSTRING(c.conta, 6, 1) AS digito FROM UsuariosJuridico u INNER JOIN Contas c ON u.cnpj = c.cpf_cnpj WHERE u.cnpj = ?";
+        String sql = "SELECT u.nomefantasia, u.razaosocial, u.cnpj, c.agencia, SUBSTRING(c.conta, 1, 5) AS numero_conta, SUBSTRING(c.conta, 6, 1) AS digito FROM UsuariosJuridico u INNER JOIN Contas c ON u.cnpj = c.cpf_cnpj WHERE u.cnpj = ?";
 
         try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
             stmt.setString(1, cnpj);
 
             try (ResultSet resultSet = stmt.executeQuery()) {
                 if (resultSet.next()) {
-                    String nome = resultSet.getString("nome");
-                    String cnpjUsuario = resultSet.getString("cpf");
+                    String nome = resultSet.getString("nomefantasia");
+                    String razaoSocial = resultSet.getString("razaosocial");
+                    String cnpjUsuario = resultSet.getString("cnpj");
                     String agencia = resultSet.getString("agencia");
                     String numeroConta = resultSet.getString("numero_conta");
                     String digito = resultSet.getString("digito");
@@ -315,8 +316,9 @@ public class ContaDAO {
                     System.out.println("+----------------------------------+");
                     System.out.println("|     C O N T A  D E S T I N O     |");
                     System.out.println("+----------------------------------+");
-                    System.out.println("| Nome: " + nome);
-                    System.out.println("| CPF: " + cnpjUsuario);
+                    System.out.println("| Razão social: " + razaoSocial);
+                    System.out.println("| Nome Fantasia: " + nome);
+                    System.out.println("| CNPJ: " + cnpjUsuario);
                     System.out.println("| Agencia: " + agencia);
                     System.out.println("| Conta: " + numeroConta + "-" + digito);
                     System.out.println("+----------------------------------+");

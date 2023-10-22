@@ -13,7 +13,7 @@ import com.models.dao.UsuarioFisicoDAO;
 import com.models.entity.Conexao;
 import com.models.entity.UsuarioFisico;
 
-public class UsuarioFisicoController {
+public abstract class UsuarioFisicoController {
 
     private static Connection conexao = Conexao.getInstancia();
     private static UsuarioFisico usuarioFisico;

@@ -12,7 +12,7 @@ import com.models.entity.Conta;
 import com.models.entity.UsuarioFisico;
 import com.models.entity.UsuarioJuridico;
 
-public class GerenteController {
+public abstract class GerenteController {
 
     private static Connection conexao = Conexao.getInstancia();
     private static ContaDAO contaDAO = new ContaDAO(conexao);

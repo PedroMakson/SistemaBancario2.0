@@ -16,7 +16,7 @@ CREATE TABLE UsuariosFisico (
 	bairro VARCHAR(100) NOT NULL,
 	cidade VARCHAR(100) NOT NULL,
  	uf CHAR(2) NOT NULL,
-    	PRIMARY KEY (cpf)
+    PRIMARY KEY (cpf)
 );
 
 /* CRIAÇÃO DA TABELA USUARIOS JURIDICOS*/

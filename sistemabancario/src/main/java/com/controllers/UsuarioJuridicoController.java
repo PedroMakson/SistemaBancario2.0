@@ -13,7 +13,7 @@ import com.models.dao.UsuarioJuridicoDAO;
 import com.models.entity.Conexao;
 import com.models.entity.UsuarioJuridico;
 
-public class UsuarioJuridicoController {
+public abstract class UsuarioJuridicoController {
 
     private static Connection conexao = Conexao.getInstancia();
     private static UsuarioJuridico usuarioJuridico;
@@ -602,8 +602,7 @@ public class UsuarioJuridicoController {
         } while (opcao != 0);
     }
 
-    // Método que verifica o formato da data de nascimento e se o usuário é maior de
-    // idade
+    // Método que verifica o formato da data de nascimento e se o usuário é maior de idade
     static Date stringParaData(String dataString) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         try {
